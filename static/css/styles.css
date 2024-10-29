@@ -1,0 +1,150 @@
+/*:root {
+  --color-black: #181818;
+  --color-white: #fff;
+}*/
+
+/*@font-face {*/
+/*    font-family: "Ubuntu";*/
+/*    src: url("/static/fonts/Ubuntu/Ubuntu-Regular.ttf") */
+/*}*/
+
+html {
+  background: var(--color-black);
+  scroll-behavior: smooth;
+}
+
+body, html {
+/*  font-family: "Ubuntu", sans-serif;*/
+  color: var(--color-white);
+  text-align: center;
+  height: 100%;
+  margin: 0;
+}
+
+body p {
+  color: var(--color-white);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: transparent;
+  color: var(--color-white);
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+}
+
+.profile { }
+
+.profile img {
+  text-align: center;
+  display: block;
+  height: 250px;
+  max-height: 45vw;
+}
+
+.overview,
+.services,
+.team,
+.clients,
+.contact {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.overview {
+  background-image: url("/static/img/background-person-sitting-by-computer.png");
+  min-height: 100%;
+
+}
+.services {
+  background-image: url("/static/img/background-computer-on-desk.jpeg");
+  min-height: 400px;
+}
+.team {
+  background-image: url("/static/img/background-person-sitting-by-computer.png");
+  min-height: 400px;
+}
+.clients {
+  background-image: url("/static/img/background-computer-screen.jpeg");  
+  min-height: 100%;
+}
+.contact {
+  background-image: url("/static/img/background-talking-to-customers.jpeg");
+  min-height: 100%;
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .overview,
+  .services,
+  .team,
+  .clients,
+  .contact {
+    background-attachment: scroll;
+  }
+}
+
+.caption {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  color: var(--color-white);
+}
+
+.caption span {
+  display: inline-block;
+  color: var(--color-white);
+  background: var(--color-black);
+  opacity: 80%;
+  padding: 2.0rem;
+  font-weight: 300;
+  font-weight: bold;
+  font-size: 4.0rem;
+  line-height: 1.2;
+  letter-spacing: -.1rem;
+  letter-spacing: 1rem;
+  letter-spacing: 0.5rem;
+}
+
+.content {
+  background: var(--color-black);
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* Skeleton overrides */
+p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  letter-spacing: -.05rem;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  p { font-size: 2.4rem; }
+}
+
+.container {
+  background-color: transparent;
+}
+
+.container h1, h2 {
+  font-weight: bold;
+}
+
+.columns {
+  min-height: 100%;
+}
