@@ -1,3 +1,4 @@
+from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -5,6 +6,9 @@ from loguru import logger
 
 from config import settings
 from routers import index
+
+
+load_dotenv()
 
 # from .routers import chat
 # from .routers import web

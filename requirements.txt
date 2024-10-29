@@ -7,6 +7,8 @@ pydantic-settings==2.6.0
 
 bcrypt==4.1.3
 
+python-dotenv==1.0.1
+
 loguru==0.7.2
 
 git+https://github.com/ajrlewis/webkit.git
