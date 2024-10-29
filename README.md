@@ -6,10 +6,21 @@ See the API docs: https://ajrlewis.com/api/docs
 
 ## Environment Variables
 
+## MySQL Commands
+
 ```sql
 show databases;
 use ajrlewis_web;
 show tables;
+```
+
+## Gandi Things
+
+### Resetting logs
+
+```bash
+cd /srv/data/var/log/www/
+echo "" > uwsgi.log
 ```
 
 ## License

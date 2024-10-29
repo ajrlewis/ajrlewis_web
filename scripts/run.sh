@@ -1,6 +1,5 @@
 #! /usr/bin/env bash
 
-# source .env
 source venv/bin/activate
-fastapi dev wsgi.py
+python3 wsgi.py
 deactivate
