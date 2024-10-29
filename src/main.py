@@ -56,3 +56,5 @@ app.include_router(index.router)
 # app.include_router(data.router)
 # app.include_router(bitcoin.router)
 # app.include_router(nostr.router)
+
+logger.debug("Finished main.py.")
