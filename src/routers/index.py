@@ -5,7 +5,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from loguru import logger
 
-from ..dependencies import GetDBDep, GetCurrentUserDep
+from dependencies import GetDBDep, GetCurrentUserDep
 
 
 templates = Jinja2Templates(directory="templates/")

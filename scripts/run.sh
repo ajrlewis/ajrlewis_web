@@ -2,5 +2,5 @@
 
 source .env
 source venv/bin/activate
-fastapi dev src/main.py
+fastapi dev wsgi.py
 deactivate

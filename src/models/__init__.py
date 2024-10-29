@@ -1,6 +1,6 @@
-from ..database import Base
+from database import Base
 
-from .api import API
-from .api_usage import APIUsage
-from .api_user import APIUser
-from .web import Web
+from models.api import API
+from models.api_usage import APIUsage
+from models.api_user import APIUser
+from models.web import Web

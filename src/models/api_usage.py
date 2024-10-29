@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DateTime, ForeignKey, Integer
 
-from ..database import Base
+from database import Base
 
 
 class APIUsage(Base):

@@ -1,7 +1,7 @@
 from sqlalchemy import Column
 from sqlalchemy import Boolean, DateTime, Integer, String
 
-from ..database import Base
+from database import Base
 
 
 class Web(Base):

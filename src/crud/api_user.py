@@ -4,9 +4,9 @@ from typing import Optional
 import bcrypt
 from loguru import logger
 
-from ..database import SessionLocal
-from ..models import APIUser
-from ..schemas.api_user import APIUserCreate
+from database import SessionLocal
+from models import APIUser
+from schemas.api_user import APIUserCreate
 
 
 def get_api_user_by_api_key(db: SessionLocal, api_key: str) -> Optional[APIUser]:

@@ -3,8 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from loguru import logger
 
-from .config import settings
-from .routers import index
+from config import settings
+from routers import index
 
 # from .routers import chat
 # from .routers import web

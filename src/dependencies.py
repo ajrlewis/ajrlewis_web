@@ -5,9 +5,9 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import imagekit
 from loguru import logger
 
-from .crud import api_user as api_user_crud
-from .database import SessionLocal
-from .models.api_user import APIUser
+from crud import api_user as api_user_crud
+from database import SessionLocal
+from models.api_user import APIUser
 
 GetCredentialsDep = Annotated[HTTPAuthorizationCredentials, Depends(HTTPBearer())]
 
