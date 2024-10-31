@@ -1,14 +1,11 @@
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
-
 from app import db
 
 
 class User(db.Model):
-    user_id: Mapped[int] = mapped_column(primary_key=True)
-    name: Mapped[str] = mapped_column(db.String(16), unique=True)
-    password_hash: Mapped[str] = mapped_column(db.String(102), nullable=True)
-    api_key: Mapped[str] = mapped_column(
-        db.String(46)
+    user_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(16), nullable=False)
+    password_hash = db.Column(db.String(102), nullable=True)
+    api_key = db.Column(
+        db.String(46), nullable=False
     )  # "sk_" + secrets.token_urlsafe(32)
-    is_admin: Mapped[bool] = mapped_column(default=False)
+    is_admin = db.Column(db.Boolean, default=False)
