@@ -51,8 +51,8 @@ pip3 install -r requirements.txt;
 sleep 0.5
 
 # Run migrations
-# echo ">>> bash scripts/migrate.sh;"
-# bash scripts/migrate.sh;
-# sleep 0.5
+echo ">>> bash scripts/migrate.sh;"
+bash scripts/migrate.sh;
+sleep 0.5
 
 echo ">>> End of install.sh script"
