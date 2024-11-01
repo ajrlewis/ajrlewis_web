@@ -11,6 +11,7 @@ from schemas.chat_schema import (
     ChatExtractResponseSchema,
     ChatRequestSchema,
     ChatResponseSchema,
+    ChatSentimentResponseSchema,
     ChatCodeRequestSchema,
     ChatCodeResponseSchema,
 )
@@ -74,7 +75,7 @@ class ChatSummarizeResource(MethodView):
 @chat_resource.route("/sentiment/")
 class ChatSentimentResource(MethodView):
     @chat_resource.arguments(ChatRequestSchema)
-    @chat_resource.response(201, ChatResponseSchema)
+    @chat_resource.response(201, ChatSentimentResponseSchema)
     @token_auth.login_required
     def post(self, data):
         """Sentiment
@@ -83,8 +84,8 @@ class ChatSentimentResource(MethodView):
         """
         text = data.get("text", "").encode("UTF-8")
         logger.debug(f"{text = }")
-        content = chat_service.sentiment(text=text)
-        return {"content": content}
+        sentiment = chat_service.sentiment(text=text)
+        return {"sentiment": sentiment}
 
 
 @chat_resource.route("/code/")

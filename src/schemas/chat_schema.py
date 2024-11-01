@@ -22,6 +22,10 @@ class ChatRequestSchema(ma.Schema):
     text = ma.fields.String(required=True)
 
 
+class ChatSentimentResponseSchema(ma.Schema):
+    sentiment = ma.fields.String(required=True)
+
+
 class ChatResponseSchema(ma.Schema):
     content = ma.fields.String(required=True)
 
