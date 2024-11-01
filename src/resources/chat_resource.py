@@ -32,8 +32,7 @@ class ChatAskResource(MethodView):
 
         Returns the answer to a question supplied in the text.
         """
-        logger.debug(f"{data = }")
-        question = data.get("question")
+        question = data.get("question", "").encode("UTF-8")
         logger.debug(f"{question = }")
         answer = chat_service.ask(question=question)
         return {"answer": answer}
@@ -49,9 +48,8 @@ class ChatExtractResource(MethodView):
 
         Returns the extract data points from the text supplied.
         """
-        logger.debug(f"{data = }")
-        text = data.get("text")
-        data_points = data.get("data_points")
+        text = data.get("text", "").encode("UTF-8")
+        data_points = data.get("data_points", "{}").encode("UTF-8")
         logger.debug(f"{text = } {data_points = }")
         data_points = chat_service.extract(text=text, data_points=data_points)
         return {"data_points": data_points}
@@ -67,8 +65,7 @@ class ChatSummarizeResource(MethodView):
 
         Returns a summary of the text supplied.
         """
-        logger.debug(f"{data = }")
-        text = data.get("text")
+        text = data.get("text", "").encode("UTF-8")
         logger.debug(f"{text = }")
         content = chat_service.summarize(text=text)
         return {"content": content}
@@ -84,8 +81,7 @@ class ChatSentimentResource(MethodView):
 
         Returns the sentiment (positive, negative, neutral) of the text supplied.
         """
-        logger.debug(f"{data = }")
-        text = data.get("text")
+        text = data.get("text", "").encode("UTF-8")
         logger.debug(f"{text = }")
         content = chat_service.sentiment(text=text)
         return {"content": content}
@@ -101,9 +97,8 @@ class ChatCodeResource(MethodView):
 
         Returns the code in a given language to do a given description.
         """
-        logger.debug(f"{data = }")
-        language = data.get("language")
-        description = data.get("description")
+        language = data.get("language", "").encode("UTF-8")
+        description = data.get("description", "").encode("UTF-8")
         logger.debug(f"{language = } {description = }")
         content = chat_service.code(language=language, description=description)
         return {"code": content}
