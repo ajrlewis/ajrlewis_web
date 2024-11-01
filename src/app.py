@@ -1,4 +1,3 @@
-from importlib import reload
 import os
 import sys
 
@@ -9,9 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_smorest import Api
 from flask_cors import CORS
 from loguru import logger
-
-reload(sys)
-sys.setdefaultencoding("utf-8")
 
 db = SQLAlchemy()
 migrate = Migrate()
