@@ -9,6 +9,8 @@ from flask_smorest import Api
 from flask_cors import CORS
 from loguru import logger
 
+sys.setdefaultencoding("utf-8")  # Set the default encoding to utf-8
+
 db = SQLAlchemy()
 migrate = Migrate()
 token_auth = HTTPTokenAuth(scheme="Bearer")  # 'Authorization: Bearer Your-API-Key'
