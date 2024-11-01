@@ -2,7 +2,6 @@ import marshmallow as ma
 
 
 class WebScrapeSchema(ma.Schema):
-    web_id = ma.fields.Int(dump_only=True)
     url = ma.fields.String()
     sanitized_url = ma.fields.String()
     redirected_url = ma.fields.String()

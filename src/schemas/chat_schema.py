@@ -1,6 +1,10 @@
 import marshmallow as ma
 
 
-class ChatExtractSchema(ma.Schema):
-    text = ma.fields.String()
-    data_points = ma.fields.Dict()
+class ChatExtractRequestSchema(ma.Schema):
+    text = ma.fields.String(required=True)
+    data_points = ma.fields.Dict(required=True)
+
+
+class ChatExtractResponseSchema(ma.Schema):
+    data_points = ma.fields.Dict(required=True)

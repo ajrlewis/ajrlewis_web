@@ -35,13 +35,16 @@ class Config:
     OPENAPI_VERSION = "3.0.2"
     OPENAPI_JSON_PATH = "api-spec.json"
     OPENAPI_URL_PREFIX = "/"
-    OPENAPI_REDOC_PATH = "/api/redoc"
+    OPENAPI_REDOC_PATH = None
+    # OPENAPI_REDOC_PATH = "/api/docs"
     OPENAPI_REDOC_URL = (
         "https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"
     )
     OPENAPI_SWAGGER_UI_PATH = "/api/docs"
+    # OPENAPI_SWAGGER_UI_PATH = None
     OPENAPI_SWAGGER_UI_URL = "https://cdn.jsdelivr.net/npm/swagger-ui-dist/"
-    OPENAPI_RAPIDOC_PATH = "/api/rapidoc"
+    # OPENAPI_RAPIDOC_PATH = "/api/rapidoc"
+    OPENAPI_RAPIDOC_PATH = None
     OPENAPI_RAPIDOC_URL = "https://unpkg.com/rapidoc/dist/rapidoc-min.js"
 
     SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")

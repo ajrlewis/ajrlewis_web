@@ -6,14 +6,13 @@ from flask_httpauth import HTTPTokenAuth
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_smorest import Api
-from flask_wtf.csrf import CSRFProtect
+from flask_cors import CORS
 from loguru import logger
-
 
 db = SQLAlchemy()
 migrate = Migrate()
 token_auth = HTTPTokenAuth(scheme="Bearer")  # 'Authorization: Bearer Your-API-Key'
-csrf = CSRFProtect()
+cors = CORS()
 
 
 def create_app(Config) -> Flask:
@@ -32,7 +31,7 @@ def create_app(Config) -> Flask:
 
     db.init_app(app=app)
     migrate.init_app(app=app, db=db)  # after db is configured.
-    csrf.init_app(app=app)
+    cors.init_app(app=app, resources={r"*": {"origins": "*"}})
 
     with app.app_context():
         # Configure authentication service
@@ -47,7 +46,9 @@ def create_app(Config) -> Flask:
         api = Api(app)
 
         from resources import web_resource
+        from resources import chat_resource
 
         api.register_blueprint(web_resource)
+        api.register_blueprint(chat_resource)
 
         return app

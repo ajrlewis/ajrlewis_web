@@ -3,7 +3,7 @@ Flask-SQLAlchemy
 flask-smorest
 Flask-HTTPAuth
 Flask-Migrate
-Flask-WTF
+Flask-Cors
 
 python-dotenv
 
@@ -12,5 +12,5 @@ loguru
 pymysql==1.1.1
 
 git+https://github.com/ajrlewis/webkit.git
-git+https://github.com/ajrlewis/huggingkit.git
+git+https://github.com/ajrlewis/chatkit.git
 git+https://github.com/ajrlewis/imagekit.git
