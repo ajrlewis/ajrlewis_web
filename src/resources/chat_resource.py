@@ -19,7 +19,7 @@ from services import chat_service
 
 
 chat_resource = Blueprint(
-    "chat", "chat", url_prefix="/api/chat", description="Chat Operations"
+    "Chat", "chat", url_prefix="/api/chat", description="Chat Operations"
 )
 
 

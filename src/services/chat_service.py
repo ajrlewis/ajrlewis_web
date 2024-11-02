@@ -1,7 +1,8 @@
 import json
 
+from aikit.chat import chat, messages
+from aikit.client import hugging_face_client
 from loguru import logger
-from chatkit import hugging_face_client, chat, messages
 
 model = "meta-llama/Meta-Llama-3-8B-Instruct"
 client = hugging_face_client.get_client(model)
