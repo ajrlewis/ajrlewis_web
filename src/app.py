@@ -47,8 +47,10 @@ def create_app(Config) -> Flask:
 
         from resources import web_resource
         from resources import chat_resource
+        from resources import image_resource
 
         api.register_blueprint(web_resource)
         api.register_blueprint(chat_resource)
+        api.register_blueprint(image_resource)
 
         return app
