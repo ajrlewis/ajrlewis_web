@@ -2,6 +2,7 @@ import io
 import json
 
 from aikit.client import hugging_face_client
+from aikit.image import naming as image_ai_naming
 from aikit.image import image as image_ai
 from loguru import logger
 import PIL
@@ -25,6 +26,13 @@ def create_image(prompt: str):
     image = image_ai.text_to_image(client, prompt=prompt)
     image_bytes_io = save_image_to_bytes_io(image)
     return image_bytes_io
+
+
+def create_image_filename(prompt: str) -> str:
+    logger.debug(f"{prompt = }")
+    filename = image_ai_naming.generate_image_name(prompt=prompt)
+    logger.debug(f"{filename = }")
+    return filename
 
 
 def read_image(file: FileStorage) -> PIL.Image:
