@@ -23,7 +23,7 @@ chat_resource = Blueprint(
 )
 
 
-@chat_resource.route("/ask/")
+@chat_resource.route("/ask")
 class ChatAskResource(MethodView):
     @chat_resource.arguments(ChatAskRequestSchema)
     @chat_resource.response(201, ChatAskResponseSchema)
@@ -39,7 +39,7 @@ class ChatAskResource(MethodView):
         return {"answer": answer}
 
 
-@chat_resource.route("/extract/")
+@chat_resource.route("/extract")
 class ChatExtractResource(MethodView):
     @chat_resource.arguments(ChatExtractRequestSchema)
     @chat_resource.response(201, ChatExtractResponseSchema)
@@ -56,7 +56,7 @@ class ChatExtractResource(MethodView):
         return {"data_points": data_points}
 
 
-@chat_resource.route("/summarize/")
+@chat_resource.route("/summarize")
 class ChatSummarizeResource(MethodView):
     @chat_resource.arguments(ChatRequestSchema)
     @chat_resource.response(201, ChatResponseSchema)
@@ -72,7 +72,7 @@ class ChatSummarizeResource(MethodView):
         return {"content": content}
 
 
-@chat_resource.route("/sentiment/")
+@chat_resource.route("/sentiment")
 class ChatSentimentResource(MethodView):
     @chat_resource.arguments(ChatRequestSchema)
     @chat_resource.response(201, ChatSentimentResponseSchema)
@@ -88,7 +88,7 @@ class ChatSentimentResource(MethodView):
         return {"sentiment": sentiment}
 
 
-@chat_resource.route("/code/")
+@chat_resource.route("/code")
 class ChatCodeResource(MethodView):
     @chat_resource.arguments(ChatCodeRequestSchema)
     @chat_resource.response(201, ChatCodeResponseSchema)

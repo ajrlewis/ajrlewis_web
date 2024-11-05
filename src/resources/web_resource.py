@@ -13,7 +13,7 @@ from schemas.web_schema import (
 from services import web_service
 
 web_resource = Blueprint(
-    "web", "web", url_prefix="/api/web", description="Web Operations"
+    "Web", "web", url_prefix="/api/web", description="Web Operations"
 )
 
 
