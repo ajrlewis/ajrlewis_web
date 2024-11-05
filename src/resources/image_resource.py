@@ -38,7 +38,7 @@ class ImageCreateResource(MethodView):
         prompt = data.get("prompt", "")
         logger.debug(f"{prompt = }")
         image = image_service.create_image(prompt=prompt)
-        filename = "test.png"
+        filename = image_service.create_image_filename(prompt=prompt)
         content_type = "png"
         return send_file(
             image,
@@ -48,7 +48,7 @@ class ImageCreateResource(MethodView):
         )
 
 
-@image_resource.route("/extract/")
+@image_resource.route("/extract")
 class ImageTextExtractResource(MethodView):
     @image_resource.arguments(ImageRequestSchema, location="files")
     # @image_resource.response(201, ImageTextExtractResponseSchema)
