@@ -16,3 +16,4 @@ urllib3==1.26.6
 git+https://github.com/ajrlewis/webkit.git
 git+https://github.com/ajrlewis/aikit.git
 git+https://github.com/ajrlewis/imagekit.git
+git+https://github.com/ajrlewis/bitcoinkit.git

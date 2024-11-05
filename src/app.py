@@ -45,12 +45,14 @@ def create_app(Config) -> Flask:
         # Register API resources
         api = Api(app)
 
-        from resources import web_resource
+        from resources import bitcoin_resource
         from resources import chat_resource
         from resources import image_resource
+        from resources import web_resource
 
-        api.register_blueprint(web_resource)
+        api.register_blueprint(bitcoin_resource)
         api.register_blueprint(chat_resource)
         api.register_blueprint(image_resource)
+        api.register_blueprint(web_resource)
 
         return app
