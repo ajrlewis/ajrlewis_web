@@ -6,7 +6,7 @@ import webkit
 
 def scrape(url: str) -> dict:
     logger.debug(f"{url = }")
-    data = webkit.scrape.text_from_url(url)
+    data = webkit.scrape.data_from_url(url)
     logger.debug(f"{data = }")
     return data
 
