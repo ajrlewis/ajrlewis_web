@@ -44,6 +44,7 @@ footer {
   max-height: 45vw;
 }
 
+.api,
 .overview,
 .services,
 .team,
@@ -54,6 +55,10 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.api {
+  background-image: url("/static/img/background-computer-screen-saver.jpeg");
+  min-height: 100%;
 }
 .overview {
   background-image: url("/static/img/background-person-sitting-by-computer.png");
@@ -79,6 +84,7 @@ footer {
 
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
+  .api,
   .overview,
   .services,
   .team,
@@ -141,10 +147,57 @@ p {
   background-color: transparent;
 }
 
-.container h1, h2 {
+.container h1, h2, h3 {
   font-weight: bold;
 }
 
 .columns {
   min-height: 100%;
 }
+
+span {
+/*  background-color: #e95e80;
+  background-color: #81e4eb;
+  background-color: #602855;
+  background-color: #d2c34a;
+  background-color: #F033C3;
+  background-color: #C3F033;
+*/
+/*  color: var(--color-black);*/
+
+/*  color: #C3F033;*/
+  color: #e95e80;
+
+  padding: 2px;
+  font-weight: bold;
+}
+
+a {
+  padding: 2px;
+  font-weight: bold;
+}
+
+
+/* Skeleton overrides */
+
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: var(--color-black);
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: var(--color-black);
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }

@@ -39,8 +39,10 @@ def create_app(Config) -> Flask:
 
         # Register blueprints
         from blueprints import index_bp
+        from blueprints import api_bp
 
         app.register_blueprint(index_bp, url_prefix="/")
+        app.register_blueprint(api_bp, url_prefix="/api")
 
         # Register API resources
         api = Api(app)
