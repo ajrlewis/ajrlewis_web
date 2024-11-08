@@ -14,6 +14,8 @@ from schemas.chat_schema import (
     ChatSentimentResponseSchema,
     ChatCodeRequestSchema,
     ChatCodeResponseSchema,
+    ChatKeywordsRequestSchema,
+    ChatKeywordsResponseSchema,
 )
 from services import chat_service
 
@@ -37,6 +39,22 @@ class ChatAskResource(MethodView):
         logger.debug(f"{question = }")
         answer = chat_service.ask(question=question)
         return {"answer": answer}
+
+
+@chat_resource.route("/keywords")
+class ChatKeywordsResource(MethodView):
+    @chat_resource.arguments(ChatKeywordsRequestSchema)
+    @chat_resource.response(201, ChatKeywordsResponseSchema)
+    @token_auth.login_required
+    def post(self, data):
+        """Keywords
+
+        Returns the keywords from a supplied piece of text.
+        """
+        text = data.get("text", "").encode("UTF-8")
+        logger.debug(f"{text = }")
+        keywords = chat_service.keywords(text=text)
+        return {"keywords": keywords}
 
 
 @chat_resource.route("/extract")

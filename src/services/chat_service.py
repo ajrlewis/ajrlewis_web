@@ -17,6 +17,15 @@ def ask(question: str) -> str:
     return answer
 
 
+def keywords(text: str) -> str:
+    logger.debug(f"{text = }")
+    message = chat.call(client, "keywords", text=text, model=model)
+    logger.debug(f"{message = }")
+    keywords = message.get("content", "")
+    logger.debug(f"{keywords = }")
+    return keywords
+
+
 def extract(text: str, data_points: dict) -> dict:
     logger.debug(f"{text = } {data_points = }")
     message = chat.call(
