@@ -3,7 +3,7 @@ from flask_smorest import Blueprint, abort
 from loguru import logger
 
 from app import token_auth
-from schemas.bitcoin_schema import BitcoinBlockRequestSchema
+from schemas.bitcoin_schema import BitcoinBlockRequestSchema, BitcoinBlockResponseSchema
 
 from services import bitcoin_service
 
@@ -14,11 +14,8 @@ bitcoin_resource = Blueprint(
 
 @bitcoin_resource.route("/block")
 class BitcoinBlockResource(MethodView):
-    @bitcoin_resource.arguments(BitcoinBlockRequestSchema, location="query")
-    # @bitcoin_resource.response(200, WebScrapeSchema(many=False))
-    # @token_auth.login_required
-    def get(self, params: dict):
-        """Scrape a URL for text"""
-        timestamp = params.get("timestamp")
-        block_stats = bitcoinkit.get_block_stats(timestamp=timestamp)
-        return block_stats
+    @bitcoin_resource.response(200, BitcoinBlockResponseSchema())
+    def get(self):
+        """Get the latest block data."""
+        block_data = bitcoin_service.get_latest_block_data()
+        return block_data
