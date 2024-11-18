@@ -1,6 +1,34 @@
 import marshmallow as ma
 
 
+class ChatContextMessageSchema(ma.Schema):
+    role = ma.fields.String(
+        metadata={"description": "The role of the context message."}
+    )
+    content = ma.fields.String(
+        metadata={"description": "The content of the context message."}
+    )
+
+
+class ChatRequestSchema(ma.Schema):
+    context_messages = ma.fields.List(
+        ma.fields.Nested(ChatContextMessageSchema),
+        metadata={"description": "The context messages to pass to the LLM."},
+    )
+
+
+class ChatResponseSchema(ma.Schema):
+    context_message = ChatContextMessageSchema
+
+
+class ChatHumanizeRequestSchema(ma.Schema):
+    text = ma.fields.String(meta={"description": "The text to humanize."})
+
+
+class ChatHumanizeResponseSchema(ma.Schema):
+    humanized_text = ma.fields.String(meta={"description": "The humanized text."})
+
+
 class ChatAskRequestSchema(ma.Schema):
     question = ma.fields.String(meta={"description": "The question to ask the LLM."})
 
@@ -38,19 +66,9 @@ class ChatExtractResponseSchema(ma.Schema):
     )
 
 
-class ChatRequestSchema(ma.Schema):
-    text = ma.fields.String(meta={"description": "The text to pass to the LLM."})
-
-
 class ChatSentimentResponseSchema(ma.Schema):
     sentiment = ma.fields.String(
         meta={"description": "The sentiment of the supplied text."}
-    )
-
-
-class ChatResponseSchema(ma.Schema):
-    content = ma.fields.String(
-        meta={"description": "The content of the message returned by the LLM."}
     )
 
 

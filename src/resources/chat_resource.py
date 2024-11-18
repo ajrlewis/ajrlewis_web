@@ -5,8 +5,13 @@ from loguru import logger
 
 from app import token_auth
 from schemas.chat_schema import (
+    ChatContextMessageSchema,
+    ChatRequestSchema,
+    ChatResponseSchema,
     ChatAskRequestSchema,
     ChatAskResponseSchema,
+    ChatHumanizeRequestSchema,
+    ChatHumanizeResponseSchema,
     ChatExtractRequestSchema,
     ChatExtractResponseSchema,
     ChatRequestSchema,
@@ -25,13 +30,45 @@ chat_resource = Blueprint(
 )
 
 
+@chat_resource.route("/")
+class ChatResource(MethodView):
+    @chat_resource.arguments(ChatRequestSchema)
+    @chat_resource.response(201, ChatContextMessageSchema)
+    @token_auth.login_required
+    def post(self, data):
+        """Chat
+
+        Returns the context message response from a list of context messages.
+        """
+        context_messages = data.get("context_messages", {})
+        logger.debug(f"{context_messages = }")
+        context_message = chat_service.completion(context_messages=context_messages)
+        return context_message
+
+
+@chat_resource.route("/humanize")
+class ChatAskResource(MethodView):
+    @chat_resource.arguments(ChatHumanizeRequestSchema)
+    @chat_resource.response(201, ChatHumanizeResponseSchema)
+    @token_auth.login_required
+    def post(self, data):
+        """Humanize Text
+
+        Returns the humanized text of input text.
+        """
+        text = data.get("text", "").encode("UTF-8")
+        logger.debug(f"{text = }")
+        humanized_text = chat_service.humanize(text=text)
+        return {"humanized_text": humanized_text}
+
+
 @chat_resource.route("/ask")
 class ChatAskResource(MethodView):
     @chat_resource.arguments(ChatAskRequestSchema)
     @chat_resource.response(201, ChatAskResponseSchema)
     @token_auth.login_required
     def post(self, data):
-        """Ask
+        """Ask a Question
 
         Returns the answer to a question supplied in the text.
         """
@@ -68,7 +105,7 @@ class ChatExtractResource(MethodView):
         Returns the extract data points from the text supplied.
         """
         text = data.get("text", "").encode("UTF-8")
-        data_points = data.get("data_points", "{}").encode("UTF-8")
+        data_points = data.get("data_points", {})
         logger.debug(f"{text = } {data_points = }")
         data_points = chat_service.extract(text=text, data_points=data_points)
         return {"data_points": data_points}
