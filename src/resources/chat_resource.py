@@ -16,6 +16,9 @@ from schemas.chat_schema import (
     ChatExtractResponseSchema,
     ChatRequestSchema,
     ChatResponseSchema,
+    ChatSummarizeRequestSchema,
+    ChatSummarizeResponseSchema,
+    ChatSentimentRequestSchema,
     ChatSentimentResponseSchema,
     ChatCodeRequestSchema,
     ChatCodeResponseSchema,
@@ -26,7 +29,7 @@ from services import chat_service
 
 
 chat_resource = Blueprint(
-    "Chat", "chat", url_prefix="/api/chat", description="Chat Operations"
+    "Chat", __name__, url_prefix="/api/chat", description="Chat Operations"
 )
 
 
@@ -113,8 +116,8 @@ class ChatExtractResource(MethodView):
 
 @chat_resource.route("/summarize")
 class ChatSummarizeResource(MethodView):
-    @chat_resource.arguments(ChatRequestSchema)
-    @chat_resource.response(201, ChatResponseSchema)
+    @chat_resource.arguments(ChatSummarizeRequestSchema)
+    @chat_resource.response(201, ChatSummarizeResponseSchema)
     @token_auth.login_required
     def post(self, data):
         """Summarize
@@ -123,13 +126,13 @@ class ChatSummarizeResource(MethodView):
         """
         text = data.get("text", "").encode("UTF-8")
         logger.debug(f"{text = }")
-        content = chat_service.summarize(text=text)
-        return {"content": content}
+        summary = chat_service.summarize(text=text)
+        return {"summary": summary}
 
 
 @chat_resource.route("/sentiment")
 class ChatSentimentResource(MethodView):
-    @chat_resource.arguments(ChatRequestSchema)
+    @chat_resource.arguments(ChatSentimentRequestSchema)
     @chat_resource.response(201, ChatSentimentResponseSchema)
     @token_auth.login_required
     def post(self, data):

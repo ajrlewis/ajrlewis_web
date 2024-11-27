@@ -66,6 +66,22 @@ class ChatExtractResponseSchema(ma.Schema):
     )
 
 
+class ChatSummarizeRequestSchema(ma.Schema):
+    text = ma.fields.String(meta={"description": "The text to summarize."})
+
+
+class ChatSummarizeResponseSchema(ma.Schema):
+    summary = ma.fields.String(
+        meta={"description": "The summary of the supplied text."}
+    )
+
+
+class ChatSentimentRequestSchema(ma.Schema):
+    text = ma.fields.String(
+        meta={"description": "The text to compute the sentiment for."}
+    )
+
+
 class ChatSentimentResponseSchema(ma.Schema):
     sentiment = ma.fields.String(
         meta={"description": "The sentiment of the supplied text."}
