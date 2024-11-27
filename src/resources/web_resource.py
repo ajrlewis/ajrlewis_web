@@ -50,5 +50,5 @@ class WebSearchResource(MethodView):
         max_results = params.get("max_results")
         logger.debug(f"{keywords = } {max_results = }")
         results = web_service.search(keywords=keywords, max_results=max_results)
-        logger.debug(f"{results = }")
+        # logger.debug(f"{results = }")
         return {"results": results}
