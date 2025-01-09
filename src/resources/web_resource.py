@@ -43,7 +43,7 @@ class WebSearchResource(MethodView):
     def get(self, params: dict):
         """Search the internet.
 
-        Returns web pages relevant to supplied keywords.
+        Returns web pages relevant to a supplied query.
         """
         logger.debug(f"{params = }")
         query = params.get("query")
