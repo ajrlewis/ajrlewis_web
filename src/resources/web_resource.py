@@ -41,7 +41,7 @@ class WebSearchResource(MethodView):
     @web_resource.response(200, WebSearchResponseSchema(many=False))
     @token_auth.login_required
     def get(self, params: dict):
-        """Search the internet for pages.
+        """Search the internet.
 
         Returns web pages relevant to supplied keywords.
         """
