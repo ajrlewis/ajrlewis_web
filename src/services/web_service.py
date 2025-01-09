@@ -11,10 +11,9 @@ def scrape(url: str) -> dict:
     return data
 
 
-def search(keywords: str, max_results: int) -> list[dict]:
-    logger.debug(f"{keywords = } {max_results = }")
-    results = webkit.search.duckduckgo_search(
-        keywords=keywords, max_results=max_results
-    )
+def search(query: str, max_results: int) -> list[dict]:
+    logger.debug(f"{query = } {max_results = }")
+    # results = webkit.search.duckduckgo(
+    results = webkit.search.google(query=query, max_results=max_results)
     # logger.debug(f"{results = }")
     return results

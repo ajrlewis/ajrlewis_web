@@ -13,7 +13,7 @@ from schemas.web_schema import (
 from services import web_service
 
 web_resource = Blueprint(
-    "Web", "web", url_prefix="/api/web", description="Web Operations"
+    "Web", __name__, url_prefix="/api/web", description="Web Operations"
 )
 
 
@@ -46,9 +46,9 @@ class WebSearchResource(MethodView):
         Returns web pages relevant to supplied keywords.
         """
         logger.debug(f"{params = }")
-        keywords = params.get("keywords")
-        max_results = params.get("max_results")
-        logger.debug(f"{keywords = } {max_results = }")
-        results = web_service.search(keywords=keywords, max_results=max_results)
+        query = params.get("query")
+        max_results = params.get("max_results", 10)
+        logger.debug(f"{query = } {max_results = }")
+        results = web_service.search(query=query, max_results=max_results)
         # logger.debug(f"{results = }")
         return {"results": results}

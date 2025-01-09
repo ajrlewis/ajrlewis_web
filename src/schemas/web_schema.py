@@ -45,7 +45,7 @@ class WebScrapeResponseSchema(ma.Schema):
 
 
 class WebSearchQueryArgsSchema(ma.Schema):
-    keywords = ma.fields.String(metadata={"description": "The keywords to search for."})
+    query = ma.fields.String(metadata={"description": "The query to search for."})
     max_results = ma.fields.Integer(
         metadata={"description": "Number of results to return."}
     )
