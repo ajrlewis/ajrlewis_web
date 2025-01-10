@@ -36,12 +36,12 @@ class BitcoinPriceResource(MethodView):
         logger.debug(f"{params = }")
         currency = params.get("currency", "USD").upper()
         logger.debug(f"{currency = }")
-        df = bitcoin_service.get_current_price(currency=currency)
+        current_price = bitcoin_service.get_current_price(currency=currency)
         value = 0
         sats_value = 0
-        if df is not None:
-            logger.debug(f"{df = }")
-            value = df.iloc[0][currency]
+        if current_price is not None:
+            logger.debug(f"{current_price = }")
+            value = current_price
             logger.debug(f"{value = }")
             sats_value = int(round(100_000_000 / value))
             logger.debug(f"{sats_value = }")
